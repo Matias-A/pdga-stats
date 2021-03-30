@@ -1,1 +1,1 @@
-# pdga-stats
+# pdga-stats-chrome-extension
