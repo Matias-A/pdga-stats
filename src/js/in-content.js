@@ -7,3 +7,19 @@ if (elems[0] !== undefined) {
         text.innerHTML += " (extension working)";
     }
 }
+
+let tables = document.getElementsByClassName("tablesorter");
+console.log(tables);
+console.log(tables.length);
+for (let i = 0; i < tables.length; i++) {
+    let table = tables[i];
+
+    console.log(table);
+    let rows = table.getElementsByTagName("tr");
+    for (let j = 0; j < rows.length; j++) {
+        let row = rows[j];
+        let newCell = row.insertCell(-1);
+        newCell.innerHTML = "(empty)"
+    };
+
+};
