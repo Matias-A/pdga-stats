@@ -60,14 +60,16 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 2:
 /***/ (function(module, exports) {
 
-eval("//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///0\n");
+eval("let elems = document.getElementsByClassName(\"pane-page-title\");\nif (elems[0] !== undefined) {\n    let elemdiv1 = elems[0];\n    let elemdiv2 = elemdiv1.getElementsByClassName(\"pane-content\")[0];\n    if (elemdiv2 !== undefined) {\n        let text = elemdiv2.getElementsByTagName(\"h1\")[0];\n        console.log(\"HEJ\");\n        text.innerHTML += \" (extension working)\";\n    }\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMi5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9zcmMvanMvaW4tY29udGVudC5qcz9iODc5Il0sInNvdXJjZXNDb250ZW50IjpbImxldCBlbGVtcyA9IGRvY3VtZW50LmdldEVsZW1lbnRzQnlDbGFzc05hbWUoXCJwYW5lLXBhZ2UtdGl0bGVcIik7XG5pZiAoZWxlbXNbMF0gIT09IHVuZGVmaW5lZCkge1xuICAgIGxldCBlbGVtZGl2MSA9IGVsZW1zWzBdO1xuICAgIGxldCBlbGVtZGl2MiA9IGVsZW1kaXYxLmdldEVsZW1lbnRzQnlDbGFzc05hbWUoXCJwYW5lLWNvbnRlbnRcIilbMF07XG4gICAgaWYgKGVsZW1kaXYyICE9PSB1bmRlZmluZWQpIHtcbiAgICAgICAgbGV0IHRleHQgPSBlbGVtZGl2Mi5nZXRFbGVtZW50c0J5VGFnTmFtZShcImgxXCIpWzBdO1xuICAgICAgICBjb25zb2xlLmxvZyhcIkhFSlwiKTtcbiAgICAgICAgdGV4dC5pbm5lckhUTUwgKz0gXCIgKGV4dGVuc2lvbiB3b3JraW5nKVwiO1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyBzcmMvanMvaW4tY29udGVudC5qcyJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///2\n");
 
 /***/ })
-/******/ ]);
+
+/******/ });

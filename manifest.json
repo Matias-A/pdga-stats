@@ -14,8 +14,7 @@
             "exclude_matches": [
                 "*://www.pdga.com/player/*/details",
                 "*://www.pdga.com/player/*/history",
-                "*://www.pdga.com/player/*/wins",
-            ],
+                "*://www.pdga.com/player/*/wins"],
             "js": ["in-content.js"]
         }
     ],
