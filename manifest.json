@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "pdga-stats-chrome-extension",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Extension to add functionality to the PDGA website",
     "icons": {
         "16": "16x16.png",
