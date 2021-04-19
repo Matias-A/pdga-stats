@@ -1,3 +1,9 @@
+let currUrl = location.href;
+let numRe = /.*\/player\/(\d+)(?:\/|$).*/
+let match = currUrl.match(numRe);
+// TODO: figure out if this is a stable way to find the PDGA number
+let pdgaNumber = match[1];
+
 let tablesLoaded = false;
 let extraCols = [
     {
@@ -64,8 +70,13 @@ function fetchData(bodyRows) {
         let row = bodyRows[i];
         let tournamentCell = row.getElementsByClassName("tournament")[0];
         let tournamentLink = tournamentCell.getElementsByTagName("a")[0];
-        console.log(tournamentLink.href);
-        $.get(tournamentLink, (response)=>console.log(response));
+        // Fetches the web page for this tournament using jQuery
+        $.get(tournamentLink, (page) => {
+            $("table.results", page).each((index, table) => {
+                console.log($(table).html());
+            });
+        });
+        break; // TODO: delete this row
     }
 }
 
