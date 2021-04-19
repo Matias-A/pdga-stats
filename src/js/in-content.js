@@ -65,8 +65,7 @@ function fetchData(bodyRows) {
         let tournamentCell = row.getElementsByClassName("tournament")[0];
         let tournamentLink = tournamentCell.getElementsByTagName("a")[0];
         console.log(tournamentLink.href);
-        // TODO: asynchronously load the page at the link,
-        // call updateData() afterwards
+        $.get(tournamentLink, (response)=>console.log(response));
     }
 }
 

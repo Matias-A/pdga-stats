@@ -1,6 +1,5 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Crx = require('crx-webpack-plugin');
 const { version } = require('./package.json');
 
 module.exports = {
@@ -16,9 +15,10 @@ module.exports = {
 
     cache: true,
     devtool: 'eval-cheap-module-source-map',
+    mode: 'development',
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js?$/,
                 include: [path.resolve(__dirname, 'src')],
@@ -28,10 +28,14 @@ module.exports = {
     },
 
     plugins: [
-        new CopyWebpackPlugin([
-            { from: './manifest.json' },
-            { from: './src/images' },
-            { from: './src/views' }
-        ])
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './manifest.json' },
+                { from: './src/images' },
+                { from: './src/views' ,
+                  noErrorOnMissing: true},
+                { from: './src/plugins'}
+            ]
+        }),
     ]
 };
