@@ -1,9 +1,14 @@
 let tablesLoaded = false;
 let extraCols = [
     {
-        "name" : "# Rounds"
-    }
-]
+        "name" : "# Rounds",
+        "className" : "number-of-rounds"
+    },
+    {
+        "name" : "Avg Rating",
+        "className" : "average-round-rating"
+    },
+];
 
 document.addEventListener('readystatechange', (event) => {
     // Prevents infinite loops when new data is loaded
@@ -18,27 +23,55 @@ document.addEventListener('readystatechange', (event) => {
         console.log(table);
 
         let thead = table.getElementsByTagName("thead");
-        let headerRows = thead[0].getElementsByTagName("tr");
         let tbody = table.getElementsByTagName("tbody");
+
+        let headerRows = thead[0].getElementsByTagName("tr");
         let bodyRows = tbody[0].getElementsByTagName("tr");
 
-        // Adds each of the extra columns and fetches the relevant data
-        for (let j=0; j<extraCols.length; j++) {
-            // First updates the column header
-            let columnHeader = document.createElement("TH");
-            let columnHeaderDiv = document.createElement("DIV");
-            columnHeaderDiv.innerHTML = extraCols[j].name;
-            columnHeaderDiv.className = "tablesorter-header-inner";
-            columnHeader.appendChild(columnHeaderDiv);
-            headerRows[0].appendChild(columnHeader);
-
-            for (let k=0; k<bodyRows.length; k++) {
-                let row = bodyRows[k];
-                let newCell = row.insertCell(-1);
-                newCell.innerHTML = "(loading...)"
-            };
-        }
+        addExtraCols(headerRows[0], bodyRows);
+        fetchData(bodyRows);
     };
 
+    // Finally updates tablesLoaded to make sure the function is only run once
     tablesLoaded = true;
 });
+
+// Adds each of the extra columns
+// Populates the header cell, adds a dummy "loading" message to each body cell
+function addExtraCols(headerRow, bodyRows) {
+    for (let j=0; j<extraCols.length; j++) {
+        // First updates the column header
+        let columnHeader = document.createElement("TH");
+        let columnHeaderDiv = document.createElement("DIV");
+        columnHeaderDiv.innerHTML = extraCols[j].name;
+        columnHeaderDiv.className = "tablesorter-header-inner";
+        columnHeader.appendChild(columnHeaderDiv);
+        headerRow.appendChild(columnHeader);
+
+        // Then adds the "loading" message to each of the rows
+        for (let k=0; k<bodyRows.length; k++) {
+            let row = bodyRows[k];
+            let newCell = row.insertCell(-1);
+            newCell.innerHTML = "<i>Loading...</i>"
+            newCell.className = extraCols[j].className;
+        };
+    }
+}
+
+// Loops over each row in a table, starting the content fetching process
+function fetchData(bodyRows) {
+    for (let i=0; i<bodyRows.length; i++) {
+        let row = bodyRows[i];
+        let tournamentCell = row.getElementsByClassName("tournament")[0];
+        let tournamentLink = tournamentCell.getElementsByTagName("a")[0];
+        console.log(tournamentLink.href);
+        // TODO: asynchronously load the page at the link,
+        // call updateData() afterwards
+    }
+}
+
+// Takes the relevant data found in fetchData,
+// updates the newly added columns in this specific row
+function updateData(row, data) {
+    // TODO: fill this in
+}
