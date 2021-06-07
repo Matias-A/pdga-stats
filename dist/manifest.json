@@ -1,12 +1,16 @@
 {
     "manifest_version": 2,
-    "name": "pdga-stats-chrome-extension",
+    "name": "PDGA Stats",
+    "author": "Matias Arola",
     "version": "0.1.0",
-    "description": "Extension to add functionality to the PDGA website",
+    "description": "Adds functionality to the PDGA website",
     "icons": {
         "16": "16x16.png",
         "48": "48x48.png",
         "128": "128x128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
     },
     "content_scripts": [
         {
@@ -21,5 +25,8 @@
     "content_security_policy":
         "script-src 'self' 'unsafe-eval'; object-src 'self'; img-src * data: 'self' 'unsafe-eval'",
     "offline_enabled": true,
-    "permissions": ["tabs", "<all_urls>", "activeTab"]
+    "permissions": ["tabs", "<all_urls>", "activeTab"],
+    "browser_action": {
+        "default_popup": "popup.html"
+      }
 }

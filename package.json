@@ -1,8 +1,7 @@
 {
     "name": "pdga-stats-chrome-extension",
     "version": "0.0.0",
-    "description": "Extension to add functionality to the PDGA website",
-    "main": "src/index.js",
+    "description": "Adds functionality to the PDGA website",
     "repository": "https://github.com/Matias-A/pdga-stats-chrome-extension.git",
     "license": "MIT",
     "devDependencies": {
@@ -28,7 +27,7 @@
         "execMap": {
             "js": "node"
         },
-        "ext": "js html css",
+        "ext": "js html css json",
         "verbose": true
     },
     "dependencies": {
