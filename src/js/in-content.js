@@ -57,7 +57,7 @@ function addExtraCols(headerRow, bodyRows) {
         for (let k=0; k<bodyRows.length; k++) {
             let row = bodyRows[k];
             let newCell = row.insertCell(-1);
-            newCell.innerHTML = "<i>Loading...</i>"
+            newCell.innerHTML = "";
             newCell.className = extraCols[j].className;
         };
     }
@@ -79,6 +79,7 @@ function fetchData(bodyRows) {
                         // This means that the current table is the correct division
                         // And the currect row corresponds to the correct player
                         let numRounds = $("td.round-rating", playerRow).length;
+                        let priorRating = $("td.player-rating", playerRow).text();
                         let numProcessed = 0;
                         let ratings = [];
                         $("td.round-rating", playerRow).each((_, cell) => {
@@ -91,15 +92,14 @@ function fetchData(bodyRows) {
                             if (numProcessed === numRounds) {
                                 updateData(row, {
                                     ratings: ratings,
+                                    priorRating: priorRating
                                 });
                             }
                         });
                     }
                 })
-                //console.log($(table).html());
             });
         });
-        //break; // TODO: delete this row
     }
 }
 
@@ -107,13 +107,33 @@ function fetchData(bodyRows) {
 // updates the newly added columns in this specific row
 function updateData(row, data) {
     const roundRatings = data.ratings;
+    const priorRating = data.priorRating;
     const numRounds = roundRatings.length;
     const ratingSum = roundRatings.reduce((a, b) => a + b, 0);
     const ratingAvg = (ratingSum / numRounds) || 0;
 
+    let ratingChange = Math.round(ratingAvg) - priorRating;
+    let ratingAvgChild = document.createElement("SPAN");
+    let ratingChangeChild = document.createElement("SPAN");
+
+    let changeArrow = "&#8593;";
+    ratingChangeChild.className = "rating-change rating-change-positive";
+    if (ratingChange < 0) {
+        changeArrow = "&#8595;";
+        ratingChangeChild.className = "rating-change rating-change-negative";
+        ratingChange = -ratingChange;
+    } else if (ratingChange === 0) {
+        changeArrow = "&#8594;";
+        ratingChangeChild.className = "rating-change rating-change-neutral";
+    }
+
     // Average rating (hard coded for now)
     let ratingAvgCell = row.getElementsByClassName("average-round-rating")[0];
-    ratingAvgCell.innerHTML = Math.round(ratingAvg);
+    ratingAvgChild.innerHTML = Math.round(ratingAvg);
+    ratingChangeChild.innerHTML = changeArrow + " " + ratingChange;
+    ratingAvgCell.appendChild(ratingAvgChild);
+    ratingAvgCell.appendChild(ratingChangeChild);
+
     // Num of rounds (hard coded for now)
     let numRoundsCell = row.getElementsByClassName("number-of-rounds")[0];
     numRoundsCell.innerHTML = numRounds;

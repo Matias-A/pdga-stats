@@ -19,7 +19,8 @@
                 "*://www.pdga.com/player/*/details",
                 "*://www.pdga.com/player/*/history",
                 "*://www.pdga.com/player/*/wins"],
-            "js": ["jquery-3.6.0.min.js", "in-content.js"]
+            "js": ["jquery-3.6.0.min.js", "in-content.js"],
+            "css": ["in-content.css"]
         }
     ],
     "content_security_policy":

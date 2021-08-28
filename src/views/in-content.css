@@ -1,0 +1,20 @@
+.rating-change {
+    margin-left: .35em;
+    border-radius: 2px;
+    padding: .1em .2em;
+}
+
+.rating-change-positive {
+    color: #fff;
+    background: #56b067;
+}
+
+.rating-change-negative {
+    color: #555;
+    background: #ddd;
+}
+
+.rating-change-neutral {
+    color: #555;
+    background: #ddd;
+}
